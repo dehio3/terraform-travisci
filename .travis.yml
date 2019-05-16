@@ -13,3 +13,4 @@ before_install:
 
 script:
   - terraform init
+  - terraform plan
