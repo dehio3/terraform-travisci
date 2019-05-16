@@ -11,6 +11,13 @@ before_install:
   - sudo unzip terraform.zip -d /opt/terraform
   - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
 
-script:
-  - terraform init
-  - terraform plan
+jobs:
+  include:
+    - stage: plan
+      script:
+        - terraform init
+        - terraform plan
+    - stage: deploy
+      script:
+        - terraform init
+        - terraform plan
