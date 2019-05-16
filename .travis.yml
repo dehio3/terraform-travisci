@@ -1,8 +1,9 @@
 services:
   - docker
-env:
-  global:
-    - TF_LOG=DEBUG
+
+#env:
+#  global:
+#    - TF_LOG=DEBUG
 
 before_install:
 #  - docker pull hashicorp/terraform:light
