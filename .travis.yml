@@ -5,4 +5,4 @@ before_install:
   - docker pull hashicorp/terraform:light
 
 script:
-  - terraform init
+  - docker run -it hashicorp/terraform:light init
