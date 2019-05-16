@@ -8,4 +8,4 @@ before_install:
   - docker pull hashicorp/terraform:light
 
 script:
-  - docker run -it hashicorp/terraform:light init
+  - ls -lR ; docker run -it hashicorp/terraform:light init
