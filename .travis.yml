@@ -21,3 +21,5 @@ jobs:
       script:
         - terraform init
         - terraform plan
+      on:
+        branch: master
