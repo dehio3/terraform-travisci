@@ -7,7 +7,7 @@ services:
 
 before_install:
 #  - docker pull hashicorp/terraform:light
-  - curl -fSL "https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip" -o terraform.zip
+  - curl -fSL "https://releases.hashicorp.com/terraform/0.12.9/terraform_0.12.9_linux_amd64.zip" -o terraform.zip
   - sudo unzip terraform.zip -d /opt/terraform
   - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
 
@@ -15,11 +15,17 @@ jobs:
   include:
     - stage: plan
       script:
+        - terraform fmt
         - terraform init
+        - terraform validate
         - terraform plan
-    - stage: deploy
+    - stage: apply
       script:
         - terraform init
-        - terraform plan
+        - terraform apply -auto-approve
+    - stage: destory
+      script:
+        - terraform init
+        - terraform destory -auto-approve
       on:
         branch: master
