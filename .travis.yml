@@ -20,23 +20,21 @@ jobs:
         - terraform init
         - terraform validate
         - terraform plan
-        
+      if: |
+        branch != master
+
     - stage: apply
       script:
         - terraform init
         - terraform apply -auto-approve
-        
+      if: |
+        branch = master AND\
+        type = push
+   
     - stage: destory
       script:
         - terraform init
         - terraform destroy -auto-approve
-
-stages:
-  - name: plan
-    branches:
-      except:
-        - master
-  - name: apply
-    if: branch = master
-  - name: destory
-    if: branch = master
+      if: |
+        branch = master AND\
+        type = push
