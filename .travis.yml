@@ -28,7 +28,7 @@ jobs:
         - terraform init
         - terraform apply -auto-approve
       if: |
-        branch = master \
+        branch = master AND\
         type = push
    
     - stage: destory
@@ -36,5 +36,5 @@ jobs:
         - terraform init
         - terraform destroy -auto-approve
       if: |
-        branch = master \
+        branch = master AND\
         type = push
