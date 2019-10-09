@@ -17,17 +17,26 @@ jobs:
   include:
     - stage: plan
       script:
-        - terraform fmt
         - terraform init
         - terraform validate
         - terraform plan
+        
     - stage: apply
       script:
         - terraform init
         - terraform apply -auto-approve
+        
     - stage: destory
       script:
         - terraform init
         - terraform destroy -auto-approve
-      on:
-        branch: master
+
+stages:
+  - name: plan
+    branches:
+      except:
+        - master
+  - name: apply
+    if: branch = master
+  - name: destory
+    if: branch = master
