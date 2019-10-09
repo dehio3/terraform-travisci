@@ -28,11 +28,13 @@ jobs:
         - terraform init
         - terraform apply -auto-approve
       if: |
-        branch = master
+        branch = master \
+        type = push
    
     - stage: destory
       script:
         - terraform init
         - terraform destroy -auto-approve
       if: |
-        branch = master
+        branch = master \
+        type = push
