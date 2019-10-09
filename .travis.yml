@@ -16,24 +16,23 @@ before_install:
 jobs:
   include:
     - stage: plan
-      if:
-        - branch != master
       script:
         - terraform init
         - terraform validate
         - terraform plan
-        
+      if: |
+        branch != master
+
     - stage: apply
-      if:
-        - branch = master
       script:
         - terraform init
         - terraform apply -auto-approve
-        
+      if: |
+        branch = master
+   
     - stage: destory
-      if:
-        - branch = master
       script:
         - terraform init
         - terraform destroy -auto-approve
-
+      if: |
+        branch = master
