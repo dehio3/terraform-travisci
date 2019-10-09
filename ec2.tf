@@ -1,7 +1,7 @@
 module "ec2_test" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "~> v2.0"
-  name                   = "ec2-gitlab"
+  name                   = "ec2-travisci"
   instance_count         = 1
   ami                    = "ami-0ebe863c3d16bca9d" #amzn2-ami-hvm-2.0.20190618-x86_64-ebs
   instance_type          = "t2.micro"
